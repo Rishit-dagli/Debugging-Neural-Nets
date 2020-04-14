@@ -1,0 +1,68 @@
+ /* Geogebra to Asymptote conversion, documentation at artofproblemsolving.com/Wiki go to User:Azjps/geogebra */
+import graph; size(0cm); 
+real labelscalefactor = 0.5; /* changes label-to-point distance */
+pen dps = linewidth(0.7) + fontsize(10); defaultpen(dps); /* default pen style */ 
+pen dotstyle = black; /* point style */ 
+real xmin = -1.0520302602556562, xmax = 4.924691563429717, ymin = 0.14052151159264295, ymax = 3.532219479021452;  /* image dimensions */
+pen qqwuqq = rgb(0,0.39215686274509803,0); pen zzffff = rgb(0.6,1,1); pen zzttqq = rgb(0.6,0.2,0); pen cqcqcq = rgb(0.7529411764705882,0.7529411764705882,0.7529411764705882); 
+
+draw((1.5,3.375)--(1.0000000000003029,1.0000000000009086)--(1.5,1)--cycle, linewidth(2) + zzffff); 
+draw((1.0000000000003029,1.0000000000009086)--(0.5,0.125)--(0.9952108552193949,0.125)--cycle, linewidth(2) + zzttqq); 
+ /* draw grid of horizontal/vertical lines */
+pen gridstyle = linewidth(0.7) + cqcqcq; real gridx = 0.5, gridy = 0.5; /* grid intervals */
+for(real i = ceil(xmin/gridx)*gridx; i <= floor(xmax/gridx)*gridx; i += gridx)
+ draw((i,ymin)--(i,ymax), gridstyle);
+for(real i = ceil(ymin/gridy)*gridy; i <= floor(ymax/gridy)*gridy; i += gridy)
+ draw((xmin,i)--(xmax,i), gridstyle);
+ /* end grid */ 
+
+Label laxis; laxis.p = fontsize(10); 
+xaxis(xmin, xmax, Ticks(laxis, Step = 0.5, Size = 2, NoZero),EndArrow(6), above = true); 
+yaxis(ymin, ymax, Ticks(laxis, Step = 0.5, Size = 2, NoZero),EndArrow(6), above = true); /* draws axes; NoZero hides '0' label */ 
+ /* draw figures */
+real f1 (real x) {return theta^(3);} 
+draw(graph(f1,-1.0420302602556561,4.9146915634297175), linewidth(2) + qqwuqq); 
+draw((-0.8686952349892337,3.226661103577415)--(0.35353826678691613,3.226661103577415), linewidth(0.8)); 
+draw((1.0000000000003029,1.0000000000009086)--(1.5,1), linewidth(2)); 
+draw((1.5,1)--(1.5,3.375), linewidth(2)); 
+draw((0.5,0.125)--(1.5,0.125), linewidth(2) + red); 
+draw((1.5,0.125)--(1.5,3.375), linewidth(2) + red); 
+draw((1.0000000000003029,1.0000000000009086)--(0.9952108552193949,0.125), linewidth(2)); 
+draw((1.5,3.375)--(1.0000000000003029,1.0000000000009086), linewidth(2) + zzffff); 
+draw((1.0000000000003029,1.0000000000009086)--(1.5,1), linewidth(2) + zzffff); 
+draw((1.5,1)--(1.5,3.375), linewidth(2) + zzffff); 
+draw((1.0000000000003029,1.0000000000009086)--(0.5,0.125), linewidth(2) + zzttqq); 
+draw((0.5,0.125)--(0.9952108552193949,0.125), linewidth(2) + zzttqq); 
+draw((0.9952108552193949,0.125)--(1.0000000000003029,1.0000000000009086), linewidth(2) + zzttqq); 
+ /* dots and labels */
+label("$f$", (0.5918737996332655,0.1710773491370466), NE * labelscalefactor,qqwuqq); 
+dot((-0.2563562505993826,3.226661103577415),linewidth(3pt) + dotstyle); 
+label("$\epsilon = 0.01$", (-0.32480132669884704,3.2938839461751033), NE * labelscalefactor); 
+dot((0.5,0),dotstyle); 
+label("$B$", (0.5246509570355772,0.061076333977193364), NE * labelscalefactor); 
+dot((1.5,0),dotstyle); 
+label("$C$", (1.5268824284920202,0.061076333977193364), NE * labelscalefactor); 
+dot((1,0),dotstyle); 
+label("$A$", (1.0257666927637987,0.061076333977193364), NE * labelscalefactor); 
+dot((1.0000000000003029,1.0000000000009086),dotstyle); 
+label("$D$", (1.0257666927637987,1.0633078054336342), NE * labelscalefactor); 
+dot((1.5,1),dotstyle); 
+label("$E$", (1.5268824284920202,1.0633078054336342), NE * labelscalefactor); 
+label("$g$", (1.2457687230835057,0.904417450202735), NE * labelscalefactor); 
+dot((1.5,3.375),dotstyle); 
+label("$F$", (1.5268824284920202,3.43444079887936), NE * labelscalefactor); 
+label("$h$", (1.5941052710897083,2.18776262706769), NE * labelscalefactor); 
+dot((0.5,0.125),dotstyle); 
+label("$G$", (0.5246509570355772,0.1832996841548081), NE * labelscalefactor); 
+dot((1.5,0.125),dotstyle); 
+label("$H$", (1.5268824284920202,0.1832996841548081), NE * labelscalefactor); 
+dot((0.9952108552193949,0.125),dotstyle); 
+label("$I$", (1.019655525254918,0.1832996841548081), NE * labelscalefactor); 
+label("$e$", (1.1541012104502943,2.2122072971032125), NE * labelscalefactor,zzffff); 
+label("$f_1$", (1.2457687230835057,0.904417450202735), NE * labelscalefactor,zzffff); 
+label("$d$", (1.5941052710897083,2.18776262706769), NE * labelscalefactor,zzffff); 
+label("$i_1$", (0.6590966422309537,0.6110814097764596), NE * labelscalefactor,zzttqq); 
+label("$d_1$", (0.7446529873552842,0.03052049643278968), NE * labelscalefactor,zzttqq); 
+label("$g_1$", (1.092989535361487,0.5621920697054138), NE * labelscalefactor,zzttqq); 
+clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle); 
+ /* end of picture */
